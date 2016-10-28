@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-
 <head>
   <link href="css/style.css" rel="stylesheet">
   <link rel="icon" href="images/me.jpg" type="image/x-png">
   <script src="js/jQuery.js"></script>
-  <script src="http://code.highcharts.com/highcharts.js"></script>
-  <script src="http://code.highcharts.com/modules/exporting.js"></script>
   <script src="js/helper.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/skillset.css">
+  <script src="js/skillset.js"></script>
 </head>
 <body unresolved class="test">
   <div id="main">
@@ -27,13 +27,17 @@
     </div>
     <div id="skillsChart">
       <h2>Skills Chart</h2>
-      <div id="container" style="min-width: 310px; height: 400px; max-width: 1200px; margin: 0 auto"></div>
+      <div id="container">
+        <div class="section skills">
+          <div id="skillset" class="column"> </div>
+        </div>
+      </div>
     </div>
     <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
     </div>
     <div id="letsConnect" class='dark-gray'>
-      <h2 class='orange center-text'>Let's Connect</h2>
+      <h2 class='#F5AE23 center-text'>Let's Connect</h2>
       <ul id="footerContacts" class="flex-box">
       </ul>
     </div>
@@ -68,4 +72,51 @@
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-HzcE92lgQCFs29dgyCJrvxwFP-3m1t4&callback=initMap"
     async defer></script>
+<script type="text/javascript">
+
+      var object = [
+
+        {
+
+          'headline':'HTML & CSS',
+          'value':9,
+          'length':10,
+
+        },
+        {
+
+          'headline':'JavaScript & jQuery',
+          'value':3,
+          'length':6,
+
+        },
+        {
+
+          'headline':'Ruby & Python',
+          'value':7,
+          'length':8,
+
+        },
+        {
+
+          'headline':'Wordpress',
+          'value':4,
+          'length':4,
+
+        }
+
+      ];
+
+      $(document).ready(function(){
+
+        $("#skillset").skillset({
+
+          object:object,
+          duration:300
+
+        });
+
+      });
+</script>
+
 </body>

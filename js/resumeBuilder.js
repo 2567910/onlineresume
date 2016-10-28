@@ -215,9 +215,4 @@ education.display = function() {
 
 education.display();
 
-/**
- * Skills Chart
- */
-
-
 $("#mapDiv").append(googleMap);
