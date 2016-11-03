@@ -4,6 +4,9 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.container{
+  padding-bottom: 30px;
+}
 
 .skills .column{
   width:100%;
