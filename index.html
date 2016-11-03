@@ -1,120 +1,243 @@
 <!DOCTYPE html>
+
+
+
 <head>
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="icon" href="images/me.jpg" type="image/x-png">
-  <script src="js/jQuery.js"></script>
-  <script src="js/helper.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-HzcE92lgQCFs29dgyCJrvxwFP-3m1t4&libraries=places"></script>
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/skillset.css">
-  <script src="js/skillset.js"></script>
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <link rel="icon" href="images/me.jpg" type="image/x-png">
+
+    <script src="js/jQuery.js"></script>
+
+    <script src="js/helper.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC-HzcE92lgQCFs29dgyCJrvxwFP-3m1t4&callback&libraries=places"></script>
+
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/skillset.css">
+
+    <script src="js/skillset.js"></script>
+
 </head>
+
+
+
 <body unresolved class="test">
-  <div id="main">
-    <div id="header" class="center-content">
-      <ul id="topContacts" class='flex-box'></ul>
-    </div>
-    <div style='clear: both;'></div>
-    <div id="workExperience" class='gray'>
-      <h2>Work Experience</h2>
-    </div>
-    <div id="projects">
-      <h2>Projects</h2>
-    </div>
-    <div id="education" class='gray'>
-      <h2>Education</h2>
-    </div>
-    <div id="skillsChart">
-      <h2>Skills Chart</h2>
-      <div id="container">
-        <div class="section skills">
-          <div id="skillset" class="column"> </div>
+
+    <div id="main">
+
+        <div id="header" class="center-content">
+
+            <ul id="topContacts" class='flex-box'></ul>
+
         </div>
-      </div>
+
+        <div style='clear: both;'></div>
+
+        <div id="workExperience" class='gray'>
+
+            <h2>Work Experience</h2>
+
+        </div>
+
+        <div id="projects">
+
+            <h2>Projects</h2>
+
+        </div>
+
+        <div id="education" class='gray'>
+
+            <h2>Education</h2>
+
+        </div>
+
+        <div id="skillsChart">
+
+            <h2>Skills Chart</h2>
+
+            <div id="container">
+
+                <div class="section skills">
+
+                    <div id="skillset" class="column"> </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="mapDiv">
+
+            <h2>Where I've Lived and Worked</h2>
+
+        </div>
+
+        <div id="letsConnect" class='dark-gray'>
+
+            <h2 class='#F5AE23 center-text'>Let's Connect</h2>
+
+            <ul id="footerContacts" class="flex-box">
+
+            </ul>
+
+        </div>
+
     </div>
-    <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
-    </div>
-    <div id="letsConnect" class='dark-gray'>
-      <h2 class='#F5AE23 center-text'>Let's Connect</h2>
-      <ul id="footerContacts" class="flex-box">
-      </ul>
-    </div>
-  </div>
 
-  <script src="js/resumeBuilder.js"></script>
-  <script type="text/javascript">
-    if(document.getElementsByClassName("flex-item").length === 0) {
-      document.getElementById("topContacts").style.backgroundColor = "black";
-    }
-    if(document.getElementsByTagName("h1").length === 0) {
-      document.getElementById("header").style.backgroundColor = "black";
-    }
-    if(document.getElementsByClassName("work-entry").length === 0) {
-      document.getElementById("workExperience").style.backgroundColor = "black";
-    }
-    if(document.getElementsByClassName("project-entry").length === 0) {
-      document.getElementById("projects").style.backgroundColor = "black";
-    }
-    if(document.getElementsByClassName("education-entry").length === 0) {
-      document.getElementById("education").style.backgroundColor = "black";
-    }
-//    if(document.getElementsByClassName("skills-entry").length === 0) {
-//      document.getElementById("skillsChart").style.backgroundColor = "black";
-//    }
-    if(document.getElementsByClassName("flex-item").length === 0) {
-      document.getElementById("letsConnect").style.backgroundColor = "black";
-    }
-    if(document.getElementById("map") == undefined) {
-      document.getElementById("mapDiv").style.display = "none";
-    }
-  </script>
-<script type="text/javascript">
 
-      var object = [
 
-        {
+    <script src="js/resumeBuilder.js"></script>
 
-          'headline':'HTML & CSS',
-          'value':9,
-          'length':10,
+    <script type="text/javascript">
 
-        },
-        {
+        if (document.getElementsByClassName("flex-item").length === 0) {
 
-          'headline':'JavaScript & jQuery',
-          'value':3,
-          'length':6,
-
-        },
-        {
-
-          'headline':'Ruby & Python',
-          'value':7,
-          'length':8,
-
-        },
-        {
-
-          'headline':'Wordpress',
-          'value':4,
-          'length':4,
+            document.getElementById("topContacts").style.backgroundColor = "black";
 
         }
 
-      ];
+        if (document.getElementsByTagName("h1").length === 0) {
 
-      $(document).ready(function(){
+            document.getElementById("header").style.backgroundColor = "black";
 
-        $("#skillset").skillset({
+        }
 
-          object:object,
-          duration:300
+        if (document.getElementsByClassName("work-entry").length === 0) {
+
+            document.getElementById("workExperience").style.backgroundColor = "black";
+
+        }
+
+        if (document.getElementsByClassName("project-entry").length === 0) {
+
+            document.getElementById("projects").style.backgroundColor = "black";
+
+        }
+
+        if (document.getElementsByClassName("education-entry").length === 0) {
+
+            document.getElementById("education").style.backgroundColor = "black";
+
+        }
+
+        //    if(document.getElementsByClassName("skills-entry").length === 0) {
+
+        //      document.getElementById("skillsChart").style.backgroundColor = "black";
+
+        //    }
+
+        if (document.getElementsByClassName("flex-item").length === 0) {
+
+            document.getElementById("letsConnect").style.backgroundColor = "black";
+
+        }
+
+        if (document.getElementById("map") == undefined) {
+
+            document.getElementById("mapDiv").style.display = "none";
+
+        }
+
+    </script>
+
+    <!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-HzcE92lgQCFs29dgyCJrvxwFP-3m1t4&callback=initMap"
+
+    async defer></script> -->
+
+    <script type="text/javascript">
+
+        var object = [
+
+
+
+            {
+
+
+
+                'headline': 'HTML & CSS',
+
+                'value': 10,
+
+                'length': 10,
+
+
+
+            }, {
+
+
+
+                'headline': 'Wordpress',
+
+                'value': 6,
+
+                'length': 8,
+
+
+
+            }, {
+
+
+
+                'headline': 'JavaScript & jQuery',
+
+                'value': 2,
+
+                'length': 4,
+
+
+
+            }, {
+
+
+
+                'headline': 'Ruby & Python',
+
+                'value': 2,
+
+                'length': 6,
+
+
+
+            }
+
+
+
+        ];
+
+
+
+        $(document).ready(function() {
+
+
+
+            $("#skillset").skillset({
+
+
+
+                object: object,
+
+                duration: 250
+
+
+
+            });
+
+
 
         });
 
-      });
-</script>
+    </script>
+
+
 
 </body>
+
+
+
+</html>
