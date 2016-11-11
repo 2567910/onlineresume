@@ -11,7 +11,8 @@ $("a").css({
 //content
 
 var bio = {
-
+    "bioloop":[
+    {
     "name": "Lukas Seyfarth",
 
     "role": "Web Developer",
@@ -28,12 +29,13 @@ var bio = {
 
     },
 
-    "picture": "images/me.jpg",
+    "biopic": "images/me.jpg",
 
     "welcomeMessage": "Welcome to my Onlineresume",
 
-    "skills": ["HTML", "CSS", "Javascript", "Adobe"]
-
+    "skills": ["HTML", "CSS", "Javascript", "Adobe"],
+    }
+]
 };
 
 
@@ -50,7 +52,7 @@ var work = {
 
             "location": "Weimar, Germany",
 
-            "datesWorked": " Juni 2014 - August 2016",
+            "dates": " Juni 2014 - August 2016", // dates
 
             "description": "Joliarts.de ist ein Online-Portal auf dem Regionale Handweker und kuenstler verkaufen koennen."
 
@@ -64,7 +66,7 @@ var work = {
 
             "location": "Meiningen, Germnay",
 
-            "datesWorked": "September 2016 - March 2017",
+            "dates": "September 2016 - March 2017",
 
             "description": "Entwicklung und Design einer Wordpress Seite. "
 
@@ -76,7 +78,7 @@ var work = {
 
             "location": "Weimar, Germany",
 
-            "datesWorked": "Oktober 2016 - Februar 2017",
+            "dates": "Oktober 2016 - Februar 2017",
 
             "description": "Entwicklung und Design einer Wordpress Seite."
 
@@ -170,7 +172,7 @@ var projects = {
 
             "title": "Lukasseyfarth.com",
 
-            "datesWorked": "Oktober, 2016",
+            "dates": "Oktober, 2016",
 
             "description": "My Wordpress Portfolio",
 
@@ -184,7 +186,7 @@ var projects = {
 
             "title": "Html and CSS Portfolio",
 
-            "datesWorked": "Novermber 2016",
+            "dates": "Novermber 2016",
 
             "description": "Ein Portfolio welches ich bei meinem Front-End Web Developer " +
 
@@ -201,13 +203,18 @@ var projects = {
 };
 
 
+bio.display = function() {
 
+};
+
+
+// Encapsulation
 
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.picture);
+var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
 var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
@@ -234,23 +241,29 @@ $("#header").append(formattedBioPic);
 
 $("#header").append(formattedWelcomeMsg);
 
+
 //das folgende sagt nur das wenn etwas in skills ist dann soll es angezeig werde wenn nicht dann nicht
 
 if (bio.skills.length > 0) {
 
     $("#header").append(HTMLskillsStart);
+bio.bioloop.forEach(i in (bio.skills))
+for (i in (bio.skills)){
 
-
-
-    for (i in bio.skills) {
-
-        $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+        $("#skills").append(HTMLskills.replace("%data%", bioloop.skills[i]));
 
     }
 
 }
+    // for statement or Array forEach() method
+    // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
 
 
+
+
+
+// for statement or Array forEach() method
+// https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
 
 for (i in formattedContactInfo) {
 
@@ -263,6 +276,11 @@ for (i in formattedContactInfo) {
 
 
 
+work.display = function() {
+
+};
+
+
 function displayWork() {
 
 
@@ -273,8 +291,8 @@ function displayWork() {
 
         $("#workExperience").append(HTMLworkStart);
 
-
-
+        // for statement or Array forEach() method
+        // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
         for (i in work.jobs) {
 
             var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
@@ -283,7 +301,7 @@ function displayWork() {
 
             var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
 
-            var formattedDatesWorked = HTMLworkDates.replace("%data%", work.jobs[i].datesWorked);
+            var formatteddates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
 
             var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
 
@@ -297,7 +315,7 @@ function displayWork() {
 
             $(".work-entry:last").append(formattedWorkLocation);
 
-            $(".work-entry:last").append(formattedDatesWorked);
+            $(".work-entry:last").append(formatteddates);
 
             $(".work-entry:last").append(formattedWorkDescription);
 
@@ -313,15 +331,12 @@ function displayWork() {
 
 
 
-displayWork();
-
-
-
-
 projects.display = function() {
 
     if (projects.projects.length > 0) {
 
+        // for statement or Array forEach() method
+        // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
         for (i in projects.projects) {
 
             $("#projects").append(HTMLprojectStart);
@@ -330,7 +345,7 @@ projects.display = function() {
 
             var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
 
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
+            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
 
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
 
@@ -343,7 +358,8 @@ projects.display = function() {
             $(".project-entry:last").append(formattedProjectDescription);
 
 
-
+            // for statement or Array forEach() method
+            // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
             for (img in projects.projects[i].images) {
 
                 var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
@@ -362,15 +378,12 @@ projects.display = function() {
 };
 
 
-
-projects.display();
-
-
-
 education.display = function() {
 
     if (education.schools.length > 0 || education.onlineCourses.length > 0) {
 
+        // for statement or Array forEach() method
+        // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
         for (i in education.schools) {
 
             $("#education").append(HTMLschoolStart);
@@ -409,6 +422,9 @@ education.display = function() {
 
             $("#education").append(HTMLonlineClasses);
 
+            // for statement or Array forEach() method
+            // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
+
             for (i in education.onlineCourses) {
 
                 $("#education").append(HTMLschoolStart);
@@ -441,9 +457,15 @@ education.display = function() {
 
 
 
+//bio.display();
+
+displayWork();
+
+//work.display();
 
 education.display();
 
+projects.display();
 
 
 $("#mapDiv").append(googleMap);

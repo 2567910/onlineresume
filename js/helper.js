@@ -372,7 +372,7 @@ function initializeMap() {
 
         google.maps.event.addListener(marker, 'click', function() {
 
-            // your code goes here!
+            infoWindow.open(map, marker);
 
         });
 
