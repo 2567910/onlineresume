@@ -1,3 +1,4 @@
+//Credit to https://github.com/Skepton
 (function($) {
 
     $.fn.skillset = function(options) {

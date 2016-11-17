@@ -11,8 +11,7 @@ $("a").css({
 //content
 
 var bio = {
-    "bioloop":[
-    {
+
     "name": "Lukas Seyfarth",
 
     "role": "Web Developer",
@@ -33,9 +32,8 @@ var bio = {
 
     "welcomeMessage": "Welcome to my Onlineresume",
 
-    "skills": ["HTML", "CSS", "Javascript", "Adobe"],
-    }
-]
+    "skills": ["HTML", "CSS", "Javascript", "Adobe"]
+
 };
 
 
@@ -52,7 +50,7 @@ var work = {
 
             "location": "Weimar, Germany",
 
-            "dates": " Juni 2014 - August 2016", // dates
+            "dates": " Juni 2014 - August 2016",
 
             "description": "Joliarts.de ist ein Online-Portal auf dem Regionale Handweker und kuenstler verkaufen koennen."
 
@@ -202,7 +200,6 @@ var projects = {
 
 };
 
-
 bio.display = function() {
 
 };
@@ -241,25 +238,23 @@ $("#header").append(formattedBioPic);
 
 $("#header").append(formattedWelcomeMsg);
 
-
 //das folgende sagt nur das wenn etwas in skills ist dann soll es angezeig werde wenn nicht dann nicht
 
 if (bio.skills.length > 0) {
 
     $("#header").append(HTMLskillsStart);
-bio.bioloop.forEach(i in (bio.skills))
-for (i in (bio.skills)){
 
-        $("#skills").append(HTMLskills.replace("%data%", bioloop.skills[i]));
+
+    // for statement or Array forEach() method
+    // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
+    //mytry: bio.skills.forEach
+    for (i in bio.skills) {
+
+        $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
 
     }
 
 }
-    // for statement or Array forEach() method
-    // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-
-
-
 
 
 // for statement or Array forEach() method
@@ -276,14 +271,8 @@ for (i in formattedContactInfo) {
 
 
 
+
 work.display = function() {
-
-};
-
-
-function displayWork() {
-
-
 
     if (work.jobs.length > 0) {
 
@@ -293,7 +282,7 @@ function displayWork() {
 
         // for statement or Array forEach() method
         // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-        for (i in work.jobs) {
+         for (i in work.jobs) {
 
             var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
 
@@ -337,6 +326,9 @@ projects.display = function() {
 
         // for statement or Array forEach() method
         // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
+        //mytry: projects.projects.forEach(function(project)) {
+        //console.log(project.images[0]);
+        //});
         for (i in projects.projects) {
 
             $("#projects").append(HTMLprojectStart);
@@ -367,9 +359,6 @@ projects.display = function() {
                 $(".project-entry:last").append(formattedProjectImage);
 
             }
-
-
-
 
         }
 
@@ -456,12 +445,9 @@ education.display = function() {
 };
 
 
+bio.display();
 
-//bio.display();
-
-displayWork();
-
-//work.display();
+work.display();
 
 education.display();
 
