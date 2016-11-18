@@ -24,7 +24,9 @@ var bio = {
 
         "twitter": "kontakt@lukasseyfarth",
 
-        "location": "Erfurt, Germany"
+        "location": "Erfurt, Germany",
+
+        "mobile": "0176/82754848"
 
     },
 
@@ -40,9 +42,7 @@ var bio = {
 
 var work = {
 
-    "jobs": [
-
-        {
+    "jobs": [{
 
             "employer": "Joliarts.de",
 
@@ -55,7 +55,6 @@ var work = {
             "description": "Joliarts.de ist ein Online-Portal auf dem Regionale Handweker und kuenstler verkaufen koennen."
 
         },
-
         {
 
             "employer": "Horn Immobilien",
@@ -68,7 +67,8 @@ var work = {
 
             "description": "Entwicklung und Design einer Wordpress Seite. "
 
-        }, {
+        },
+        {
 
             "employer": "Leander Brandstaedt",
 
@@ -81,18 +81,15 @@ var work = {
             "description": "Entwicklung und Design einer Wordpress Seite."
 
         }
-
     ]
-
 };
 
 
 
 var education = {
 
-    "schools": [
+    "schools": [{
 
-        {
             "name": "E-Commerce Studium",
 
             "dates": "2017-2020",
@@ -108,7 +105,6 @@ var education = {
             "url": "http://www.eah-jena.de"
 
         },
-
         {
             "name": "Walter-Gropius-Schule",
 
@@ -124,7 +120,8 @@ var education = {
 
             "url": "http://www.walter-gropius-schule.de/"
 
-        }, {
+        },
+        {
             "name": "Burnt-river Highscool",
 
             "dates": "2012 - 2013",
@@ -138,14 +135,11 @@ var education = {
             "minor": "Math",
 
             "url": ""
-
         }
-
     ],
 
-    "onlineCourses": [
+    "onlineCourses": [{
 
-        {
             "school": "Udacity",
 
             "title": "Front-End Web Developer Nanodegree",
@@ -153,20 +147,15 @@ var education = {
             "dates": "2016 - 2017",
 
             "url": "https://de.udacity.com/course/front-end-web-developer-nanodegree--nd001/"
-
         }
-
     ]
-
 };
 
 
 
 var projects = {
 
-    "projects": [
-
-        {
+    "projects": [{
 
             "title": "Lukasseyfarth.com",
 
@@ -179,7 +168,6 @@ var projects = {
             "url": "https://lukasseyfarth.com/"
 
         },
-
         {
 
             "title": "Html and CSS Portfolio",
@@ -193,11 +181,8 @@ var projects = {
             "images": ["images/portfolio.jpg"],
 
             "url": "www.1.com"
-
         }
-
     ]
-
 };
 
 bio.display = function() {
@@ -210,8 +195,6 @@ bio.display = function() {
 
     var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-
-
     var formattedContactInfo = [];
 
     formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
@@ -222,6 +205,7 @@ bio.display = function() {
 
     formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
 
+    formattedContactInfo.push(HTMLmobile.replace("%data%", bio.contacts.mobile));
 
     $("#header").prepend(formattedRole);
 
@@ -249,9 +233,7 @@ bio.display = function() {
         $("#topContacts").append(formattedContactInfo[i]);
 
         $("#footerContacts").append(formattedContactInfo[i]);
-
     }
-
 };
 
 
@@ -287,11 +269,7 @@ work.display = function() {
 
     }
 
-
-
 }
-
-
 
 projects.display = function() {
 
@@ -301,14 +279,11 @@ projects.display = function() {
 
             $("#projects").append(HTMLprojectStart);
 
-
-
             var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.title).replace("#", project.url);
 
             var formattedProjectDates = HTMLprojectDates.replace("%data%", project.dates);
 
             var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.description);
-
 
 
             $(".project-entry:last").append(formattedProjectTitle);
@@ -328,7 +303,6 @@ projects.display = function() {
         });
 
     }
-
 };
 
 
@@ -339,7 +313,6 @@ education.display = function() {
         education.schools.forEach(function(school) {
 
             $("#education").append(HTMLschoolStart);
-
 
 
             var formattedSchoolName = HTMLschoolName.replace("%data%", school.name).replace("#", school.url);
@@ -353,7 +326,6 @@ education.display = function() {
             var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", school.majors);
 
             //var formattedSchoolMinor = HTMLschoolMinor.replace("%data%", schools.minor);
-
 
 
             $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree);
@@ -394,9 +366,7 @@ education.display = function() {
             });
 
         }
-
     }
-
 };
 
 
