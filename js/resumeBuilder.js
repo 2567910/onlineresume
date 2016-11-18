@@ -95,13 +95,13 @@ var education = {
         {
             "name": "E-Commerce Studium",
 
-            "datesAttended": "2017-2020",
+            "dates": "2017-2020",
 
             "location": "Jena, Germany",
 
             "degree": "bachelor of science",
 
-            "major": "E-commerce",
+            "majors": ["E-commerce"],
 
             "minor": "Math",
 
@@ -112,13 +112,13 @@ var education = {
         {
             "name": "Walter-Gropius-Schule",
 
-            "datesAttended": "2015 - 2017",
+            "dates": "2015 - 2017",
 
             "location": "Erfurt, Germany",
 
             "degree": "Fachhochschulabschluss",
 
-            "major": "Design",
+            "majors": ["Design"],
 
             "minor": "Math",
 
@@ -127,13 +127,13 @@ var education = {
         }, {
             "name": "Burnt-river Highscool",
 
-            "datesAttended": "2012 - 2013",
+            "dates": "2012 - 2013",
 
             "location": "New York",
 
             "degree": "Junior year",
 
-            "major": "English",
+            "majors": ["English"],
 
             "minor": "Math",
 
@@ -150,7 +150,7 @@ var education = {
 
             "title": "Front-End Web Developer Nanodegree",
 
-            "completed": "2016 - 2017",
+            "dates": "2016 - 2017",
 
             "url": "https://de.udacity.com/course/front-end-web-developer-nanodegree--nd001/"
 
@@ -192,7 +192,7 @@ var projects = {
 
             "images": ["images/portfolio.jpg"],
 
-            "url": "#"
+            "url": "www.1.com"
 
         }
 
@@ -202,103 +202,78 @@ var projects = {
 
 bio.display = function() {
 
-};
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
 
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
-// Encapsulation
+    var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
-
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
 
 
-var formattedContactInfo = [];
+    var formattedContactInfo = [];
 
-formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
+    formattedContactInfo.push(HTMLemail.replace("%data%", bio.contacts.email));
 
-formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
+    formattedContactInfo.push(HTMLgithub.replace("%data%", bio.contacts.github));
 
-formattedContactInfo.push(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+    formattedContactInfo.push(HTMLtwitter.replace("%data%", bio.contacts.twitter));
 
-formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
-
-
+    formattedContactInfo.push(HTMLlocation.replace("%data%", bio.contacts.location));
 
 
-$("#header").prepend(formattedRole);
+    $("#header").prepend(formattedRole);
 
-$("#header").prepend(formattedName);
+    $("#header").prepend(formattedName);
 
-$("#header").append(formattedBioPic);
+    $("#header").append(formattedBioPic);
 
-$("#header").append(formattedWelcomeMsg);
-
-//das folgende sagt nur das wenn etwas in skills ist dann soll es angezeig werde wenn nicht dann nicht
-
-if (bio.skills.length > 0) {
-
-    $("#header").append(HTMLskillsStart);
+    $("#header").append(formattedWelcomeMsg);
 
 
-    // for statement or Array forEach() method
-    // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-    //mytry: bio.skills.forEach
-    for (i in bio.skills) {
+    if (bio.skills.length > 0) {
 
-        $("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+        $("#header").append(HTMLskillsStart);
+
+        bio.skills.forEach(function(skill) {
+
+            $("#skills").append(HTMLskills.replace("%data%", skill));
+
+        });
 
     }
 
-}
+    for (i in formattedContactInfo) {
 
+        $("#topContacts").append(formattedContactInfo[i]);
 
-// for statement or Array forEach() method
-// https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
+        $("#footerContacts").append(formattedContactInfo[i]);
 
-for (i in formattedContactInfo) {
+    }
 
-    $("#topContacts").append(formattedContactInfo[i]);
-
-    $("#footerContacts").append(formattedContactInfo[i]);
-
-}
-
-
-
+};
 
 
 work.display = function() {
 
     if (work.jobs.length > 0) {
 
-
-
         $("#workExperience").append(HTMLworkStart);
 
-        // for statement or Array forEach() method
-        // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-         for (i in work.jobs) {
+        work.jobs.forEach(function(job) {
 
-            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].employer);
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
 
-            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].title);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%", job.title);
 
-            var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+            var formattedWorkLocation = HTMLworkLocation.replace("%data%", job.location);
 
-            var formatteddates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
+            var formatteddates = HTMLworkDates.replace("%data%", job.dates);
 
-            var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
-
-
+            var formattedWorkDescription = HTMLworkDescription.replace("%data%", job.description);
 
             var formattedEmployerWorkTitle = formattedEmployer + formattedWorkTitle;
-
-
 
             $(".work-entry:last").append(formattedEmployerWorkTitle);
 
@@ -308,9 +283,7 @@ work.display = function() {
 
             $(".work-entry:last").append(formattedWorkDescription);
 
-        }
-
-
+        });
 
     }
 
@@ -324,22 +297,17 @@ projects.display = function() {
 
     if (projects.projects.length > 0) {
 
-        // for statement or Array forEach() method
-        // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-        //mytry: projects.projects.forEach(function(project)) {
-        //console.log(project.images[0]);
-        //});
-        for (i in projects.projects) {
+        projects.projects.forEach(function(project) {
 
             $("#projects").append(HTMLprojectStart);
 
 
 
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
+            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.title).replace("#", project.url);
 
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+            var formattedProjectDates = HTMLprojectDates.replace("%data%", project.dates);
 
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.description);
 
 
 
@@ -349,18 +317,15 @@ projects.display = function() {
 
             $(".project-entry:last").append(formattedProjectDescription);
 
+            project.images.forEach(function(image) {
 
-            // for statement or Array forEach() method
-            // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-            for (img in projects.projects[i].images) {
-
-                var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
+                var formattedProjectImage = HTMLprojectImage.replace("%data%", image);
 
                 $(".project-entry:last").append(formattedProjectImage);
 
-            }
+            });
 
-        }
+        });
 
     }
 
@@ -371,25 +336,23 @@ education.display = function() {
 
     if (education.schools.length > 0 || education.onlineCourses.length > 0) {
 
-        // for statement or Array forEach() method
-        // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
-        for (i in education.schools) {
+        education.schools.forEach(function(school) {
 
             $("#education").append(HTMLschoolStart);
 
 
 
-            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].name).replace("#", education.schools[i].url);
+            var formattedSchoolName = HTMLschoolName.replace("%data%", school.name).replace("#", school.url);
 
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", school.degree);
 
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].datesAttended);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", school.dates);
 
-            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", school.location);
 
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", school.majors);
 
-            //var formattedSchoolMinor = HTMLschoolMinor.replace("%data%", education.schools[i].minor);
+            //var formattedSchoolMinor = HTMLschoolMinor.replace("%data%", schools.minor);
 
 
 
@@ -403,30 +366,24 @@ education.display = function() {
 
             //$(".education-entry:last").append(formattedSchoolMinor);
 
-        }
-
-
+        });
 
         if (education.onlineCourses.length > 0) {
 
             $("#education").append(HTMLonlineClasses);
 
-            // for statement or Array forEach() method
-            // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
 
-            for (i in education.onlineCourses) {
+            education.onlineCourses.forEach(function(onlineCourse) {
 
                 $("#education").append(HTMLschoolStart);
 
-                var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
+                var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", onlineCourse.title).replace("#", onlineCourse.url);
 
-                var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+                var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", onlineCourse.school);
 
-                var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
+                var formattedOnlineDates = HTMLonlineDates.replace("%data%", onlineCourse.dates);
 
-                var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
-
-
+                var formattedOnlineURL = HTMLonlineURL.replace("%data%", onlineCourse.url).replace("#", onlineCourse.url);
 
                 $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
 
@@ -434,11 +391,9 @@ education.display = function() {
 
                 $(".education-entry:last").append(formattedOnlineURL);
 
-            }
+            });
 
         }
-
-
 
     }
 
