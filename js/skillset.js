@@ -1,103 +1,101 @@
-(function ( $ ) {
+//Credit to https://github.com/Skepton
+(function($) {
 
-	$.fn.skillset = function( options ) {
+    $.fn.skillset = function(options) {
 
-		_this = this;
+        _this = this;
 
-		$.fn.extend({
+        $.fn.extend({
 
-			isOnScreen: function(){
+            isOnScreen: function() {
 
-				var win = $(window);
-				var viewport = {
-					top : win.scrollTop(),
-					left : win.scrollLeft()
-				};
-				viewport.right = viewport.left + win.width();
-				viewport.bottom = viewport.top + win.height();
-				var bounds = this.offset();
-				bounds.right = bounds.left + this.outerWidth();
-				bounds.bottom = bounds.top + this.outerHeight();
+                var win = $(window);
+                var viewport = {
+                    top: win.scrollTop(),
+                    left: win.scrollLeft()
+                };
+                viewport.right = viewport.left + win.width();
+                viewport.bottom = viewport.top + win.height();
+                var bounds = this.offset();
+                bounds.right = bounds.left + this.outerWidth();
+                bounds.bottom = bounds.top + this.outerHeight();
 
-				return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-			},
+                return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+            },
 
-			setRun: function(option){
-				hasRun = option;
-			},
-			checkRun: function(){
-				return hasRun;
-			}
+            setRun: function(option) {
+                hasRun = option;
+            },
+            checkRun: function() {
+                return hasRun;
+            }
 
-		});
+        });
 
-		var settings = $.extend({
+        var settings = $.extend({
             // These are the defaults.
             object: "",
             duration: 80
-        }, options );
+        }, options);
 
-		$(this).setRun(false);
-		if($(this).isOnScreen() && !$(this).checkRun() ){
-			create_trigger($(this));
-		}
+        $(this).setRun(false);
+        if ($(this).isOnScreen() && !$(this).checkRun()) {
+            create_trigger($(this));
+        }
 
-		function bar_loop(start,value,length){
+        function bar_loop(start, value, length) {
 
-			var j=0;
-			for(var i = 0; i < length; i++){
+            var j = 0;
+            for (var i = 0; i < length; i++) {
 
-				setTimeout(function(){
+                setTimeout(function() {
 
-					if(j < value){
-						var html = '<div class="full"></div>';
-						$(html).appendTo(start).css('width',100/length+'%');
-					}else{
-						var html = '<div class="empty"></div>';
-						$(html).appendTo(start).css('width',100/length+'%');
-					}
-					j++;
+                    if (j < value) {
+                        var html = '<div class="full"></div>';
+                        $(html).appendTo(start).css('width', 100 / length + '%');
+                    }
+                    j++;
 
-				},settings.duration*i/(length/10));
+                }, settings.duration * i / (length / 10));
 
-			}
+            }
 
-		}
+        }
 
-		function create_trigger(element){
+        function create_trigger(element) {
 
-			var key, count = 0;
-			for(key in settings.object) {
-				if(object.hasOwnProperty(key)) {
-					count++;
-				}
-			}
+            var key, count = 0;
+            for (key in settings.object) {
+                if (object.hasOwnProperty(key)) {
+                    count++;
+                }
+            }
 
-			$(element).setRun(true);
-			start = $(element).append('<ul class="skillset-list"></ul>');
+            $(element).setRun(true);
+            start = $(element).append('<ul class="skillset-list"></ul>');
 
-			for(var i = 0; i < count; i++){
+            for (var i = 0; i < count; i++) {
 
-				start = $(element).find('ul');
-				var html = '<li class="skill-'+(i+1)+'""><p>'+settings.object[i]['headline']+' <span class="icon-info-circled" data-info="'+settings.object[i]['description']+'"></span></p><div class="bar"></div></li>';
-				html = $(html).appendTo(start).find('.bar');
+                start = $(element).find('ul');
+                var html = '<li class="skill-' + (i + 1) + '""><p>' + settings.object[i].headline + '<div class="bar"></div></li>';
+                html = $(html).appendTo(start).find('.bar');
 
-				var value = settings.object[i]['value'];
-				var length = settings.object[i]['length'];
+                var value = settings.object[i].value;
+                var length = settings.object[i].length;
 
-				bar_loop(html,value,length);
+                bar_loop(html, value, length);
 
-			}
+            }
 
-		}
+        }
 
-		$(document).scroll(function(){
+        $(document).scroll(function() {
 
-			if($(_this).isOnScreen() && !$(_this).checkRun()){
-				create_trigger($(_this));
-			}
+            if ($(_this).isOnScreen() && !$(_this).checkRun()) {
+                create_trigger($(_this));
+            }
 
-		});
-	};
+        });
+    };
 
-}( jQuery ));
+}(jQuery));
